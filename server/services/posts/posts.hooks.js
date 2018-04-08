@@ -1,4 +1,5 @@
 
+const fs = require('fs')
 
 module.exports = {
   before: {
@@ -8,7 +9,9 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [
+
+    ]
   },
 
   after: {
@@ -18,7 +21,11 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [
+      // result => {
+      //   fs.unlink(`.${result.result.imgPath}`)
+      // }
+    ]
   },
 
   error: {

@@ -12,7 +12,7 @@
         </div>
         <div class="form-group mt-2">
           <label>圖片</label>
-          <Cropper @crop="cropValue" :previewImg="model.imgPath"></Cropper>
+          <Cropper @crop="cropValue"></Cropper>
         </div>
         <button class="btn btn-primary" @click.prevent="handleCreate">送出</button>
       </div>
@@ -94,6 +94,9 @@ export default {
       if (createPost) {
         swal('好欸!', '儲存成功', 'success')
         this.allPosts.data.unshift(createPost)
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       } else {
         swal('老天鵝!', '儲存失敗', 'error')
         return false
@@ -110,7 +113,10 @@ export default {
       const removePost = await client.service('posts').remove(id)
       if (removePost) {
         swal('刪除', '已經刪除', 'success')
-        event.target.closest('.card').remove()
+        // event.target.closest('.card').remove()
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       } else {
         swal('刪除', '刪除失敗', 'error')
       }
